@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>TV Display</title>
-  <style>
-    body {
-      margin: 0;
-      background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    img {
-      max-width: 100vw;
-      max-height: 100vh;
-      object-fit: contain;
-      transition: opacity 0.5s;
-    }
-  </style>
-</head>
-<body>
-  <img id="slide" src="monthly.png" alt="TV Image">
-
-  <script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
     const images = [
       "monthly.png",
       "daily.png"
@@ -33,12 +9,10 @@
 
     function showNextImage() {
       current = (current + 1) % images.length;
-      slide.src = images[current] + "?t=" + new Date().getTime(); // avoid cache
-      setTimeout(showNextImage, 15000); // đổi ảnh mỗi 15 giây
+      slide.src = images[current] + "?t=" + new Date().getTime();
+      setTimeout(showNextImage, 15000);
     }
 
-    // Bắt đầu sau 15 giây từ ảnh đầu tiên
     setTimeout(showNextImage, 15000);
-  </script>
-</body>
-</html>
+  });
+</script>

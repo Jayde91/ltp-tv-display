@@ -34,11 +34,10 @@
 
       function showNextImage() {
         current = (current + 1) % images.length;
-        slide.src = images[current] + "?t=" + new Date().getTime(); // tránh cache
-        setTimeout(showNextImage, 15000); // chuyển ảnh sau 15 giây
+        slide.src = images[current] + "?t=" + new Date().getTime();
       }
 
-      setTimeout(showNextImage, 15000);
+      setInterval(showNextImage, 15000); // đổi ảnh mỗi 15 giây liên tục
     });
   </script>
 </body>

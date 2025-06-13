@@ -31,10 +31,14 @@
     let current = 0;
     const slide = document.getElementById("slide");
 
-    setInterval(() => {
+    function showNextImage() {
       current = (current + 1) % images.length;
-      slide.src = images[current] + "?t=" + new Date().getTime(); // cache bust
-    }, 10000);
+      slide.src = images[current] + "?t=" + new Date().getTime(); // avoid cache
+      setTimeout(showNextImage, 15000); // đổi ảnh mỗi 15 giây
+    }
+
+    // Bắt đầu sau 15 giây từ ảnh đầu tiên
+    setTimeout(showNextImage, 15000);
   </script>
 </body>
 </html>
